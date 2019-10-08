@@ -10,16 +10,46 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"*",
+		"onCommand:explorer.new_inc_src",
+		"onCommand:explorer.create_project",
+		"onCommand:explorer.properties"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "rt-project-manager.initWorkspace",
+				"title": "Init Workspace"
+			},
+			{
+				"command": "explorer.create_project",
+				"title": "Create Project"
+			},
+			{
+				"command": "explorer.properties",
+				"title": "Properties"
+			},
+			{
+				"command": "test",
+				"title": "test",
+				"when": "isLinux"
 			}
-		]
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "explorer.create_project",
+					"group": "navigation",
+					"when": "!explorerResourceIsFolder"
+				},
+				{
+					"command": "explorer.properties",
+					"when": "explorerResourceIsFolder",
+					"group": "7_modification"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
