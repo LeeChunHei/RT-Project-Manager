@@ -1,0 +1,131 @@
+{
+    "tabs": {
+        "Project Setting": {
+            "Project Name": {
+                "id": "project_name",
+                "type": "text",
+                "placeholder": "Project Name"
+            },
+            "Config name": {
+                "id": "config_name",
+                "type": "text",
+                "placeholder": "Config Name"
+            },
+            "Project Template": {
+                "id": "project_template",
+                "type": "select",
+                "options": [
+                    {
+                        "value": "empty",
+                        "name": "Empty Project"
+                    },
+                    {
+                        "value": "blinky",
+                        "name": "Blinky Led Project"
+                    }
+                ]
+            }
+        },
+        "Chip Setting": {
+            "Code Execute Setting": {
+                "id": "xip",
+                "type": "select",
+                "options": [
+                    {
+                        "value": "non_xip",
+                        "name": "Non XIP (Execute in ITCM)"
+                    },
+                    {
+                        "value": "xip",
+                        "name": "XIP (Execute In Place)"
+                    }
+                ]
+            },
+            "Flash Size": {
+                "id": "flash_size",
+                "type": "number",
+                "placeholder": "In Byte"
+            },
+            "Ram Size": {
+                "id": "ram_size",
+                "type": "number",
+                "placeholder": "In Byte"
+            }
+        },
+        "Advance": {
+            "Optimization": {
+                "id": "op_level",
+                "type": "select",
+                "options": [
+                    {
+                        "value": "-Og",
+                        "name": "Optimize for debug (-Og)"
+                    },
+                    {
+                        "value": "-O0",
+                        "name": "Otimization for compilation time (-O0)"
+                    },
+                    {
+                        "value": "-O1",
+                        "name": "Optimization for code size and execution time (-O1)"
+                    },
+                    {
+                        "value": "-O2",
+                        "name": "Optimization more for code size and execution time (-O2)"
+                    },
+                    {
+                        "value": "-O3",
+                        "name": "Optimization max for code size and execution time (-O3)"
+                    },
+                    {
+                        "value": "-Os",
+                        "name": "Optimization for code size (-Os)"
+                    }
+                ]
+            },
+            "Debug Level": {
+                "id": "debug_level",
+                "type": "select",
+                "options": [
+                    {
+                        "value": "-g3",
+                        "name": "Maximal debug information (-g3)"
+                    },
+                    {
+                        "value": "-g",
+                        "name": "Default debug information (-g)"
+                    },
+                    {
+                        "value": "-g1",
+                        "name": "Minimal debug information (-g1)"
+                    },
+                    {
+                        "value": "-g0",
+                        "name": "No debug information (-g0)"
+                    },
+                ]
+            }
+        },"Locations":{
+            "RTLib Location":{
+                "id":"rtlib_loc",
+                "type":"location_text",
+                "placeholder":"/something/like/this/RTLib"
+            },
+            "Make Location":{
+                "id":"make_loc",
+                "type":"location_text",
+                "placeholder":"/something/like/this/make or make"
+            },
+            "Workspace Location":{
+                "id":"workspace_loc",
+                "type":"location_text",
+                "placeholder":"/something/like/this"
+            },
+            "Toolchain Location":{
+                "id":"toolchain_loc",
+                "type":"location_text",
+                "placeholder":"/your/arm/toolchain/location/bin/"
+            }
+        }
+    }
+}

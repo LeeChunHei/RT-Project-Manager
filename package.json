@@ -10,24 +10,21 @@
 		"Other"
 	],
 	"activationEvents": [
-		"*",
-		"onCommand:explorer.new_inc_src",
-		"onCommand:explorer.create_project",
-		"onCommand:explorer.properties"
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "rt-project-manager.initWorkspace",
-				"title": "Init Workspace"
+				"command": "rt-project-manager.init_workspace",
+				"title": "Init RT Workspace"
 			},
 			{
-				"command": "explorer.create_project",
+				"command": "rt-project-manager.create_project",
 				"title": "Create Project"
 			},
 			{
-				"command": "explorer.properties",
+				"command": "rt-project-manager.properties",
 				"title": "Properties"
 			},
 			{
@@ -39,12 +36,12 @@
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "explorer.create_project",
+					"command": "rt-project-manager.create_project",
 					"group": "navigation",
-					"when": "!explorerResourceIsFolder"
+					"when": "explorerResourceIsFolder"
 				},
 				{
-					"command": "explorer.properties",
+					"command": "rt-project-manager.properties",
 					"when": "explorerResourceIsFolder",
 					"group": "7_modification"
 				}
