@@ -102,7 +102,7 @@
                     {
                         "value": "-g0",
                         "name": "No debug information (-g0)"
-                    },
+                    }
                 ]
             }
         },"Locations":{

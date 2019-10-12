@@ -10,7 +10,10 @@
 		"Other"
 	],
 	"activationEvents": [
-		"*"
+		"*",
+		"onCommand:rt-project-manager.create_project",
+		"onCommand:rt-project-manager.init_workspace",
+		"onCommand:rt-project-manager.properties"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -21,16 +24,11 @@
 			},
 			{
 				"command": "rt-project-manager.create_project",
-				"title": "Create Project"
+				"title": "Create RT Project"
 			},
 			{
 				"command": "rt-project-manager.properties",
 				"title": "Properties"
-			},
-			{
-				"command": "test",
-				"title": "test",
-				"when": "isLinux"
 			}
 		],
 		"menus": {
@@ -38,7 +36,7 @@
 				{
 					"command": "rt-project-manager.create_project",
 					"group": "navigation",
-					"when": "explorerResourceIsFolder"
+					"when": "!explorerResourceIsFolder"
 				},
 				{
 					"command": "rt-project-manager.properties",

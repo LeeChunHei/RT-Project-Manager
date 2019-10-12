@@ -2,11 +2,14 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as fs from 'fs';
+import * as util from 'util';
+import * as os from 'os';
 import * as path from 'path';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	console.log('on');
 	process.chdir(context.extensionPath);
 	let create_project_panel: vscode.WebviewPanel | undefined = undefined;
 	let properties_panel: vscode.WebviewPanel | undefined = undefined;
@@ -40,7 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
 			create_project_panel.webview.html = getWebviewContent('create_project.html');
 			create_project_panel.webview.postMessage({
 				command: 'init',
-				items: JSON.parse(fs.readFileSync(path.join(context.extensionPath,'public','webview','create_project.json'),'utf8')),
+				items: JSON.parse(fs.readFileSync(path.join(context.extensionPath, 'public', 'webview', 'create_project.json'), 'utf8')),
 				flash_size: context.workspaceState.get('flash_size') ? context.workspaceState.get('flash_size') : '33554432',
 				ram_size: context.workspaceState.get('ram_size') ? context.workspaceState.get('ram_size') : '33554432',
 				workspace_path: context.workspaceState.get('workspacePath') ? context.workspaceState.get('workspacePath') : '',
@@ -189,6 +192,16 @@ export function activate(context: vscode.ExtensionContext) {
 								create_project_panel.dispose();
 							}
 							break;
+						case 'open_folder_dialog':
+							vscode.window.showOpenDialog({
+								canSelectMany: false,
+								canSelectFolders: true,
+								canSelectFiles: false
+							}).then(uri => {
+								if (uri) {
+									console.log(uri[0].fsPath);
+								}
+							});
 					}
 					return;
 				},
