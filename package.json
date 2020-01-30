@@ -3,7 +3,10 @@
 	"displayName": "RT Project Manager",
 	"description": "Extension that manages projects used NXP i.MX RT series chip",
 	"publisher": "LeeChunHei",
-	"repository": {"type": "git", "url": "https://github.com/LeeChunHei/RT-Project-Manager.git"},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/LeeChunHei/RT-Project-Manager.git"
+	},
 	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.41.0"
@@ -17,7 +20,7 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"configuration":{
+		"configuration": {
 			"title": "RT Project Manager",
 			"properties": {
 				"rt-project-manager.rtlibPath": {
@@ -72,39 +75,39 @@
 		],
 		"viewsContainers": {
 			"activitybar": [
-			  {
-				"id": "rt-project-manager-explorer",
-				"title": "RT Project Manager",
-				"icon": "media/icon.svg"
-			  }
+				{
+					"id": "rt-project-manager-explorer",
+					"title": "RT Project Manager",
+					"icon": "media/icon.svg"
+				}
 			]
 		},
 		"views": {
 			"rt-project-manager-explorer": [
-			  {
-				"id": "rt-project-manager-view",
-				"name": " "
-			  }
+				{
+					"id": "rt-project-manager-view",
+					"name": " "
+				}
 			]
 		},
 		"menus": {
 			"view/title": [
-			  {
-				"command": "rt-project-manager-view.refresh",
-				"when": "view == rt-project-manager-view",
-				"group": "navigation"
-			  },
-			  {
-				"command": "rt-project-manager-view.new_project",
-				"when": "view == rt-project-manager-view"
-			  }
+				{
+					"command": "rt-project-manager-view.refresh",
+					"when": "view == rt-project-manager-view",
+					"group": "navigation"
+				},
+				{
+					"command": "rt-project-manager-view.new_project",
+					"when": "view == rt-project-manager-view"
+				}
 			],
 			"view/item/context": [
-			  {
-				"command": "rt-project-manager-view.property",
-				"when": "view == rt-project-manager-view && viewItem == project_item",
-				"group": "inline"
-			  }
+				{
+					"command": "rt-project-manager-view.property",
+					"when": "view == rt-project-manager-view && viewItem == project_item",
+					"group": "inline"
+				}
 			]
 		}
 	},

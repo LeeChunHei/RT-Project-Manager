@@ -13,29 +13,29 @@ Require extension Cortex Debug and set up proper JLink Path in Cortex Debug exte
 
 ## Usage
 1. Click RT Project Manager icon in view container<br>
-![](./readme_images/1.png)<br>
+![](readme_images/1.png)<br>
 2. Click the `Click to init RT workspace` button to initialize the workspace<br>
-![](./readme_images/2.png)<br>
+![](readme_images/2.png)<br>
 3. Select the location of the workspace and name the workspace<br>
-![](./readme_images/3.png)<br>
+![](readme_images/3.png)<br>
 4. Select the folder of the RTLib library<br>
-![](./readme_images/4.png)<br>
+![](readme_images/4.png)<br>
 5. New workspace should opened with RTLib folder in it<br>
-![](./readme_images/5.png)<br>
+![](readme_images/5.png)<br>
 6. Click RT Project Manager icon in view container again and click new project<br>
-![](./readme_images/6.png)<br>
+![](readme_images/6.png)<br>
 7. Create project by filling the information in the create project webview<br>
-![](./readme_images/7.png)<br>
-![](./readme_images/8.png)<br>
-![](./readme_images/9.png)<br>
-![](./readme_images/10.png)<br>
+![](readme_images/7.png)<br>
+![](readme_images/8.png)<br>
+![](readme_images/9.png)<br>
+![](readme_images/10.png)<br>
 8. The template main.cpp will be opened after the project is successfully created<br>
-![](./readme_images/11.png)<br>
+![](readme_images/11.png)<br>
 9. Click the `Property` button of the project in RT Project Manager Treeview to further config the corresponding project<br>
-![](./readme_images/12.png)<br>
-![](./readme_images/13.png)<br>
-![](./readme_images/14.png)<br>
-![](./readme_images/15.png)<br>
+![](readme_images/12.png)<br>
+![](readme_images/13.png)<br>
+![](readme_images/14.png)<br>
+![](readme_images/15.png)<br>
 
 ## Extension Settings
 
