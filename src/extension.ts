@@ -11,8 +11,6 @@ import { ProjectPanel } from './project_panel';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	vscode.window.showInformationMessage('started');
-	console.log(vscode.window);
 	const manager_node = new ManagerNode();
 	vscode.window.registerTreeDataProvider('rt-project-manager-view', manager_node);
 	vscode.commands.registerCommand('rt-project-manager-view.refresh', () => manager_node.refresh());
