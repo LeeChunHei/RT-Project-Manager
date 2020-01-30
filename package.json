@@ -10,16 +10,131 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"*",
+		"onView:rt-project-manager-view"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"configuration":{
+			"title": "RT Project Manager",
+			"properties": {
+				"rt-project-manager.rtlibPath": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"title": "RTLib Path",
+					"description": "Path to the RTLib folder, should be /something/like/this/RTLib"
+				},
+				"rt-project-manager.make": {
+					"type": "string",
+					"default": "make",
+					"title": "Make Path",
+					"description": "Path to the make program, should be /something/like/this/make or make"
+				},
+				"rt-project-manager.flash_size": {
+					"type": "number",
+					"default": 33554432,
+					"title": "Flash Size",
+					"description": "Default value for flash size, will update after each project create"
+				},
+				"rt-project-manager.ram_size": {
+					"type": "number",
+					"default": 33554432,
+					"title": "Ram Size",
+					"description": "Default value for external ram size, will update after each project create"
+				}
+			}
+		},
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "rt-project-manager-view.refresh",
+				"category": "RT Project Manager",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "rt-project-manager-view.new_project",
+				"category": "RT Project Manager",
+				"title": "New Project"
+			},
+			{
+				"command": "rt-project-manager-view.debug_project",
+				"category": "RT Project Manager",
+				"title": "Debug"
+			},
+			{
+				"command": "rt-project-manager-view.release_project",
+				"category": "RT Project Manager",
+				"title": "Release"
+			},
+			{
+				"command": "rt-project-manager-view.build_project",
+				"category": "RT Project Manager",
+				"title": "Build"
+			},
+			{
+				"command": "rt-project-manager-view.property",
+				"category": "RT Project Manager",
+				"title": "Property"
 			}
-		]
+		],
+		"viewsContainers": {
+			"activitybar": [
+			  {
+				"id": "rt-project-manager-explorer",
+				"title": "RT Project Manager",
+				"icon": "media/icon.svg"
+			  }
+			]
+		},
+		"views": {
+			"rt-project-manager-explorer": [
+			  {
+				"id": "rt-project-manager-view",
+				"name": " "
+			  }
+			]
+		},
+		"menus": {
+			"view/title": [
+			  {
+				"command": "rt-project-manager-view.refresh",
+				"when": "view == rt-project-manager-view",
+				"group": "navigation"
+			  },
+			  {
+				"command": "rt-project-manager-view.new_project",
+				"when": "view == rt-project-manager-view"
+			  }
+			],
+			"view/item/context": [
+			  {
+				"command": "rt-project-manager-view.build_project",
+				"when": "view == rt-project-manager-view && viewItem == project_item",
+				"group": "inline"
+			  },
+			  {
+				"command": "rt-project-manager-view.debug_project",
+				"when": "view == rt-project-manager-view && viewItem == project_item",
+				"group": "view_build_menu@1"
+			  },
+			  {
+				"command": "rt-project-manager-view.release_project",
+				"when": "view == rt-project-manager-view && viewItem == project_item",
+				"group": "view_build_menu@2"
+			  },
+			  {
+				"command": "rt-project-manager-view.property",
+				"when": "view == rt-project-manager-view && viewItem == project_item",
+				"group": "view_property_menu@1"
+			  }
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

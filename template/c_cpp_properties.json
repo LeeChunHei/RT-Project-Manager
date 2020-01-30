@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "%s",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "DEBUG",
+                "%s",
+                "%s",
+                "%s"
+            ],
+            "compilerPath": "%s",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}

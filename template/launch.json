@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+          "name": "Debug",
+          "cwd": "${workspaceRoot}",
+          "executable": "./debug/%s.elf",
+          "request": "launch",
+          "type": "cortex-debug",
+          "servertype": "jlink",
+          "interface": "swd",
+          "device": "MIMXRT1052QSPI",
+          "runToMain": true,
+          "preRestartCommands": [
+            "enable breakpoint",
+            "monitor reset",
+            "monitor semihosting enable",
+            "monitor semihosting ioclient 2"
+          ],
+          "preLaunchTask": "build",
+          "postLaunchCommands": [
+            "enable breakpoint",
+            "monitor reset",
+            "monitor semihosting enable",
+            "monitor semihosting ioclient 2"
+          ]
+        }
+    ]
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            font-family: "Lato", sans-serif;
+            background: #252526;
+            color: #FFFFFF;
+        }
+        /* Style the tab */
+        
+        .tab {
+            float: left;
+            border: 1px solid #ccc;
+            background-color: var(background);
+            width: 20%;
+            height: 100%;
+        }
+        /* Style the buttons inside the tab */
+        
+        .tab button {
+            display: block;
+            background-color: inherit;
+            color: #FFFFFF;
+            padding: 22px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+        /* Change background color of buttons on hover */
+        
+        .tab button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        /* Create an active/current "tab button" class */
+        
+        .tab button.active {
+            background-color: #ccc;
+            color: black
+        }
+        /* Style the tab content */
+        
+        .tabcontent {
+            float: left;
+            padding: 12px 12px;
+            border: 1px solid #ccc;
+            width: 80%;
+            height: 100%;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #f1f1f1;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+        }
+        
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin: 8px 8px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        /* Hide the browser's default checkbox */
+        
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        /* Create a custom checkbox */
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+        }
+        /* On mouse-over, add a grey background color */
+        
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+        /* When the checkbox is checked, add a blue background */
+        
+        .container input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+        /* Create the checkmark/indicator (hidden when not checked) */
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        /* Show the checkmark when checked */
+        
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+        /* Style the checkmark/indicator */
+        
+        .container .checkmark:after {
+            left: 7px;
+            top: 4px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Create Project</h2>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Project Setting')" id="defaultOpen">Project Setting</button>
+        <button class="tablinks" onclick="openTab(event, 'Chip Setting')">Chip Setting</button>
+        <button class="tablinks" onclick="openTab(event, 'Advance')">Advance</button>
+        <button class="tablinks" onclick="openTab(event, 'Locations')">Locations</button>
+        <button class="tablinks" onclick="openTab(event, 'Create')">Create</button>
+    </div>
+
+    <div id="Project Setting" class="tabcontent">
+        <h3>Project Name</h3>
+        <p>
+            <input type="text" id="project_name" placeholder="Project name" name="project_name">
+            <br>
+        </p>
+        <h3>Config</h3>
+        <p>
+            <input type="text" id="config_name" placeholder="Config name" name="config_name">
+            <br>
+        </p>
+        <h3>Project Template</h3>
+        <p>
+            <select name="project_template" id="project_template">
+                <option value="empty">Empty Project</option>
+                <option value="blinky">Blinky Led Project</option>
+            </select>
+        </p>
+    </div>
+
+    <div id="Chip Setting" class="tabcontent">
+        <h3>Code Execute Setting</h3>
+        <p>
+            <select name="xip" id="xip">
+                <option value="non_xip">Non XIP (Execute in ITCM)</option>
+                <option value="xip">XIP (Execute In Place)</option>
+            </select>
+        </p>
+        <h3>Flash Size</h3>
+        <p>
+            <input type="number" name="flash_size" id="flash_size" placeholder="In byte">
+        </p>
+        <h3>Ram Size</h3>
+        <p>
+            <input type="number" name="ram_size" id="ram_size" placeholder="In byte">
+        </p>
+    </div>
+
+    <div id="Advance" class="tabcontent">
+        <h3>Optimization</h3>
+        <p>Optimization Level
+            <select name="op_level" id="op_level">
+                <option value="-Og">Optimize for debug (-Og)</option>
+                <option value="-O0">Otimization for compilation time (-O0)</option>
+                <option value="-O1">Optimization for code size and execution time (-O1)</option>
+                <option value="-O2">Optimization more for code size and execution time (-O2)</option>
+                <option value="-O3">Optimization max for code size and execution time (-O3)</option>
+                <option value="-Os">Optimization for code size (-Os)</option>
+            </select>
+        </p>
+        <h3>Debug Level</h3>
+        <p>
+            <select name="debug_level" id="debug_level">
+                <option value="-g3">Maximal debug information (-g3)</option>
+                <option value="-g">Default debug information (-g)</option>
+                <option value="-g1">Minimal debug information (-g1)</option>
+                <option value="-g0">No debug information (-g0)</option>
+            </select>
+        </p>
+    </div>
+
+    <div id="Locations" class="tabcontent">
+        <h3>RTLib Location</h3>
+        <p>
+            <input type="text" name="rtlib_loc" id="rtlib_loc" placeholder="/something/like/this/RTLib">
+        </p>
+        <h3>Make Location</h3>
+        <p>
+            <input type="text" name="make_loc" id="make_loc" placeholder="/something/like/this/make or make">
+        </p>
+        <h3>Project Location</h3>
+        <p>
+            <input type="text" name="project_loc" id="project_loc" placeholder="/something/like/this">
+        </p>
+        <h3>Toolchain Location</h3>
+        <p>
+            <input type="text" name="toolchain_loc" id="toolchain_loc" placeholder="/your/arm/toolchain/location/bin/">
+        </p>
+    </div>
+
+    <script>
+        const vscode = acquireVsCodeApi();
+
+        window.addEventListener('message', event => {
+            const message = event.data;
+            switch (message.command) {
+                case 'init':
+                    document.getElementById("flash_size").value = message.flash_size;
+                    document.getElementById("ram_size").value = message.ram_size;
+                    document.getElementById("rtlib_loc").value = message.rtlib_path;
+                    document.getElementById("make_loc").value = message.make_path;
+                    document.getElementById("project_loc").value = message.project_path;
+                    document.getElementById("toolchain_loc").value = message.toolchain_path;
+                    break;
+            }
+        });
+
+        function openTab(evt, tabName) {
+            if (tabName != "Create") {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            } else {
+                vscode.postMessage({
+                    command: 'project_setting',
+                    project_name: document.getElementById("project_name").value,
+                    config_name: document.getElementById("config_name").value,
+                    xip: document.getElementById("xip").value,
+                    project_template: document.getElementById("project_template").value,
+                    flash_size: document.getElementById("flash_size").value,
+                    ram_size: document.getElementById("ram_size").value,
+                    op_level: document.getElementById("op_level").value,
+                    debug_level: document.getElementById("debug_level").value,
+                    rtlib_path: document.getElementById("rtlib_loc").value,
+                    make_path: document.getElementById("make_loc").value,
+                    project_path: document.getElementById("project_loc").value,
+                    toolchain_path: document.getElementById("toolchain_loc").value
+                });
+            }
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+</body>
+
+</html>
