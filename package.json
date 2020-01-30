@@ -1,7 +1,7 @@
 {
 	"name": "rt-project-manager",
 	"displayName": "RT Project Manager",
-	"description": "Extension that manages projects used in NXP i.MX RT series chip",
+	"description": "Extension that manages projects used NXP i.MX RT series chip",
 	"publisher": "LeeChunHei",
 	"repository": {"type": "git", "url": "https://github.com/LeeChunHei/RT-Project-Manager.git"},
 	"version": "1.0.0",
