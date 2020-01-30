@@ -3,7 +3,8 @@
         {
             "name": "%s",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "%s"
             ],
             "defines": [
                 "DEBUG",

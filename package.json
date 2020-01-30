@@ -2,7 +2,9 @@
 	"name": "rt-project-manager",
 	"displayName": "RT Project Manager",
 	"description": "Extension that manages projects used in NXP i.MX RT series chip",
-	"version": "0.0.1",
+	"publisher": "LeeChunHei",
+	"repository": {"type": "git", "url": "https://github.com/LeeChunHei/RT-Project-Manager.git"},
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
@@ -63,21 +65,6 @@
 				"title": "New Project"
 			},
 			{
-				"command": "rt-project-manager-view.debug_project",
-				"category": "RT Project Manager",
-				"title": "Debug"
-			},
-			{
-				"command": "rt-project-manager-view.release_project",
-				"category": "RT Project Manager",
-				"title": "Release"
-			},
-			{
-				"command": "rt-project-manager-view.build_project",
-				"category": "RT Project Manager",
-				"title": "Build"
-			},
-			{
 				"command": "rt-project-manager-view.property",
 				"category": "RT Project Manager",
 				"title": "Property"
@@ -114,24 +101,9 @@
 			],
 			"view/item/context": [
 			  {
-				"command": "rt-project-manager-view.build_project",
-				"when": "view == rt-project-manager-view && viewItem == project_item",
-				"group": "inline"
-			  },
-			  {
-				"command": "rt-project-manager-view.debug_project",
-				"when": "view == rt-project-manager-view && viewItem == project_item",
-				"group": "view_build_menu@1"
-			  },
-			  {
-				"command": "rt-project-manager-view.release_project",
-				"when": "view == rt-project-manager-view && viewItem == project_item",
-				"group": "view_build_menu@2"
-			  },
-			  {
 				"command": "rt-project-manager-view.property",
 				"when": "view == rt-project-manager-view && viewItem == project_item",
-				"group": "view_property_menu@1"
+				"group": "inline"
 			  }
 			]
 		}

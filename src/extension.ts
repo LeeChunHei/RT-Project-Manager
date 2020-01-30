@@ -64,6 +64,15 @@ function initWorkspace() {
 			options.defaultUri = vscode.workspace.workspaceFile;
 		}
 	}
+	const open_options: vscode.OpenDialogOptions = {
+		canSelectMany: false,
+		canSelectFiles: false,
+		canSelectFolders: true,
+		openLabel: 'Open RTLib Folder',
+		filters: {
+			'All files': ['*']
+		}
+	};
 	vscode.window.showSaveDialog(options).then(uri => {
 		if (uri) {
 			let path = uri.fsPath;
@@ -71,8 +80,13 @@ function initWorkspace() {
 				path = path + '.code-workspace';
 				uri = vscode.Uri.file(path);
 			}
-			fs.writeFileSync(uri.fsPath, '{\n"folders": []\n}');
-			vscode.commands.executeCommand('vscode.openFolder', uri);
+			vscode.window.showOpenDialog(open_options).then(rt_uri => {
+				if (rt_uri && rt_uri[0] && uri) {
+					let rt_path = rt_uri[0].fsPath;
+					fs.writeFileSync(uri.fsPath, util.format('{\n"folders": [\n{\n"path": "%s"\n}\n],\n"settings": {\n"rt-project-manager.rtlibPath": "%s"\n}}',rt_path,rt_path));
+					vscode.commands.executeCommand('vscode.openFolder', uri);
+				}
+			});
 		}
 	});
 }
