@@ -52,13 +52,16 @@ None
 
 ## Release Notes
 
+### 1.0.2
 
-### 1.0.0 First Release
-
-Basic of the extension is completed.<br>
-RT chip project library can be created and config with this extension
+Fix incorrect behaviour when empty file with extension name start with h is opened
 
 ### 1.0.1 Insignificant Fix
 
 Update README.<br>
 Correct the grammatical mistakes in extension description.
+
+### 1.0.0 First Release
+
+Basic of the extension is completed.<br>
+RT chip project library can be created and config with this extension

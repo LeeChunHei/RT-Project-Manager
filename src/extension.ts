@@ -34,7 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 	vscode.workspace.onDidOpenTextDocument((doc: vscode.TextDocument) => {
-		if (doc.fileName.indexOf('.h') !== -1 && doc.uri.scheme === "file") {
+		if (doc.fileName.split('.').pop() === 'h' && doc.uri.scheme === "file") {
 			if (fs.readFileSync(doc.uri.fsPath, 'utf8') === '') {
 				if (doc.uri.fsPath) {
 					let temp = doc.uri.fsPath.split('\\').pop();
@@ -81,7 +81,7 @@ function initWorkspace() {
 			vscode.window.showOpenDialog(open_options).then(rt_uri => {
 				if (rt_uri && rt_uri[0] && uri) {
 					let rt_path = rt_uri[0].fsPath;
-					fs.writeFileSync(uri.fsPath, util.format('{\n"folders": [\n{\n"path": "%s"\n}\n],\n"settings": {\n"rt-project-manager.rtlibPath": "%s"\n}}',rt_path,rt_path));
+					fs.writeFileSync(uri.fsPath, util.format('{\n"folders": [\n{\n"path": "%s"\n}\n],\n"settings": {\n"rt-project-manager.rtlibPath": "%s"\n}}', rt_path, rt_path));
 					vscode.commands.executeCommand('vscode.openFolder', uri);
 				}
 			});
