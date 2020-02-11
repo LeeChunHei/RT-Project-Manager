@@ -37,10 +37,13 @@ export function activate(context: vscode.ExtensionContext) {
 		if (doc.fileName.split('.').pop() === 'h' && doc.uri.scheme === "file") {
 			if (fs.readFileSync(doc.uri.fsPath, 'utf8') === '') {
 				if (doc.uri.fsPath) {
-					let temp = doc.uri.fsPath.split('\\').pop();
-					if (temp) {
-						let file_name = String(temp.split('/').pop()).replace('.', '_').toUpperCase();
-						fs.writeFileSync(doc.uri.fsPath, '#ifndef ' + file_name + '\n#define ' + file_name + '\n\n\n\n#endif');
+					if (vscode.workspace.workspaceFolders) {
+						for(let folder of vscode.workspace.workspaceFolders){
+							if(doc.uri.fsPath.indexOf(folder.uri.fsPath)!==-1){
+								let file_name = doc.uri.fsPath.replace(folder.uri.fsPath, '').substr(1).split(path.sep).join('_').split('.').join('_').toUpperCase();
+								fs.writeFileSync(doc.uri.fsPath, '#ifndef ' + file_name + '\n#define ' + file_name + '\n\n\n\n#endif');
+							}
+						}
 					}
 				}
 			}
@@ -81,6 +84,7 @@ function initWorkspace() {
 			vscode.window.showOpenDialog(open_options).then(rt_uri => {
 				if (rt_uri && rt_uri[0] && uri) {
 					let rt_path = rt_uri[0].fsPath;
+					rt_path = rt_path.split('\\').join('\\\\');
 					fs.writeFileSync(uri.fsPath, util.format('{\n"folders": [\n{\n"path": "%s"\n}\n],\n"settings": {\n"rt-project-manager.rtlibPath": "%s"\n}}', rt_path, rt_path));
 					vscode.commands.executeCommand('vscode.openFolder', uri);
 				}

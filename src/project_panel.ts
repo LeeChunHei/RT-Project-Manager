@@ -146,7 +146,7 @@ export class ProjectPanel {
                                 fs.writeFileSync(project_path + '/.vscode/c_cpp_properties.json',
                                     util.format(c_cpp_properties_template,
                                         message.project_name,
-                                        path.join(message.rtlib_path, 'inc'),
+                                        path.join(message.rtlib_path, 'inc').split('\\').join('\\\\'),
                                         message.config_name,
                                         'RT1052',
                                         is_xip ? 'HAVE_XIP' : '',
@@ -196,7 +196,7 @@ export class ProjectPanel {
                 command: 'init',
                 flash_size: workspace_config.get('flash_size') ? workspace_config.get('flash_size') : '33554432',
                 ram_size: workspace_config.get('ram_size') ? workspace_config.get('ram_size') : '33554432',
-                project_path: vscode.workspace.workspaceFile?.fsPath ? path.dirname(vscode.workspace.workspaceFile?.fsPath) : '',
+                project_path: vscode.workspace.workspaceFile?.fsPath ? path.dirname(vscode.workspace.workspaceFile?.fsPath).split('\\').join('\\\\') : '',
                 rtlib_path: workspace_config.get('rtlibPath') ? workspace_config.get('rtlibPath') : '',
                 make_path: workspace_config.get('make') ? workspace_config.get('make') : '',
                 toolchain_path: vscode.workspace.getConfiguration('cortex-debug').get('armToolchainPath')
@@ -208,7 +208,7 @@ export class ProjectPanel {
         let _panel = ProjectPanel.openPanel('Property: ' + project_name, 'property');
         let data = fs.readFileSync(path.join(ProjectPanel.extension_context.extensionPath, 'resources', 'property.html'), 'utf-8');
         let workspace_config = vscode.workspace.getConfiguration('rt-project-manager');
-        let project_path = project_location.fsPath;
+        let project_path = project_location.fsPath.split('\\').join('\\\\');
         if (_panel !== undefined) {
             _panel.webview.html = data;
             const makefile = fs.readFileSync(project_path + '/makefile', 'utf8');

@@ -52,6 +52,10 @@ None
 
 ## Release Notes
 
+### 1.1.0 Fix for Windows
+
+Fix incorrect path added to workspace during initialization
+
 ### 1.0.2
 
 Fix incorrect behaviour when empty file with extension name start with h is opened
